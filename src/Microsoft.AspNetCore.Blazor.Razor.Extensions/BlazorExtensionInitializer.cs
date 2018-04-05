@@ -76,6 +76,10 @@ namespace Microsoft.AspNetCore.Blazor.Razor
             builder.Features.Add(new BindTagHelperDescriptorProvider());
             builder.Features.Add(new OrphanTagHelperLoweringPass());
 
+            // Implementation of event handlers
+            builder.Features.Add(new EventHandlerLoweringPass());
+            builder.Features.Add(new EventHandlerTagHelperDescriptorProvider());
+
             if (builder.Configuration.ConfigurationName == DeclarationConfiguration.ConfigurationName)
             {
                 // This is for 'declaration only' processing. We don't want to try and emit any method bodies during
